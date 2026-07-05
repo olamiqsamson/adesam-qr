@@ -175,8 +175,8 @@
                     <span class="detail-value" id="table">-</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">CHAIR</span>
-                    <span class="detail-value" id="chair">-</span>
+                    <span class="detail-label">GUEST</span>
+                    <span class="detail-value" id="guestName">-</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">FAMILIES</span>
@@ -188,7 +188,7 @@
                 🎫 <span id="guestId">-</span>
             </div>
             
-            <p class="message">💖 With hearts full of gratitude, we warmly welcome you to our wedding. Your presence means the world to us.</p>
+            <p class="message" id="welcomeMessage">💖 With heart full of gratitude, we warmly welcome you to our wedding. Your presence means the world to us.</p>
         </div>
         
         <div id="error" class="error" style="display: none;">
@@ -200,13 +200,12 @@
         // Get URL parameters
         const params = new URLSearchParams(window.location.search);
         const guest = params.get('guest');
-        const table = params.get('table');
-        const chair = params.get('chair');
+        const table = params.get('table') || '1';
         
         // Check if parameters exist
-        if (guest && table && chair) {
+        if (guest) {
             document.getElementById('table').textContent = table;
-            document.getElementById('chair').textContent = chair;
+            document.getElementById('guestName').textContent = guest;
             document.getElementById('guestId').textContent = guest;
         } else {
             document.getElementById('content').style.display = 'none';

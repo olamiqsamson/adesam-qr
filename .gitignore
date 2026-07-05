@@ -1,0 +1,8 @@
+# Ignore generated QR code images
+qrcodes/
+
+# Ignore Node modules and logs if any
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
