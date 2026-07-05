@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADESAM 2026 - Wedding Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            background-image: url('wedding-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(168, 230, 216, 0.08);
+            z-index: 0;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.70);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(45, 107, 92, 0.25);
+            padding: 40px;
+            max-width: 650px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border: 3px solid rgba(45, 107, 92, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 3px solid #6B3E3E;
+            padding-bottom: 20px;
+        }
+        
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            color: #6B3E3E;
+            font-size: 40px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .subtitle {
+            color: #2D6B5C;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .date {
+            color: #2D6B5C;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, #2D6B5C 0%, #6B3E3E 100%);
+            margin: 30px 0;
+        }
+        
+        .details {
+            text-align: left;
+            background: linear-gradient(135deg, rgba(168, 230, 216, 0.2) 0%, rgba(45, 107, 92, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #2D6B5C;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(45, 107, 92, 0.2);
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #2D6B5C;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .detail-value {
+            color: #6B3E3E;
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .guest-id {
+            background: linear-gradient(135deg, #2D6B5C 0%, #1E4D42 100%);
+            color: #FFFFFF;
+            padding: 18px 25px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            word-break: break-all;
+            box-shadow: 0 5px 15px rgba(45, 107, 92, 0.3);
+        }
+        
+        .message {
+            color: #2D6B5C;
+            font-size: 16px;
+            margin-top: 25px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #c33;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="emoji">💍</div>
+            <h1>ADEOLA & SAMUEL</h1>
+            <p class="subtitle">ADESAM 2026</p>
+            <p class="date">Saturday, 31st October 2026</p>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div id="content">
+            <div class="details">
+                <div class="detail-row">
+                    <span class="detail-label">TABLE</span>
+                    <span class="detail-value" id="table">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">CHAIR</span>
+                    <span class="detail-value" id="chair">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">FAMILIES</span>
+                    <span class="detail-value">Olatunji & Omoniyi</span>
+                </div>
+            </div>
+            
+            <div class="guest-id">
+                🎫 <span id="guestId">-</span>
+            </div>
+            
+            <p class="message">💖 With hearts full of gratitude, we warmly welcome you to our wedding. Your presence means the world to us.</p>
+        </div>
+        
+        <div id="error" class="error" style="display: none;">
+            ❌ Invalid guest information. Please scan a valid QR code.
+        </div>
+    </div>
+    
+    <script>
+        // Get URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const guest = params.get('guest');
+        const table = params.get('table');
+        const chair = params.get('chair');
+        
+        // Check if parameters exist
+        if (guest && table && chair) {
+            document.getElementById('table').textContent = table;
+            document.getElementById('chair').textContent = chair;
+            document.getElementById('guestId').textContent = guest;
+        } else {
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
